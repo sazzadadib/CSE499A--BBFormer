@@ -207,11 +207,14 @@ def main(args):
                     print(f"  - Max Segments: {max_seg_num}")
                     print(f"  - Minimum Score: {min_score}")
                     
+                    # For Action total length Print
+                    # label_times = {}
+
                     for i in range(output[vid_idx]['segments'].shape[0]):
                         if(output[vid_idx]['scores'][i] > 0.2):
                             start = output[vid_idx]['segments'][i, 0]
                             end = output[vid_idx]['segments'][i, 1]
-                            label = output[vid_idx]['labels'][i]
+                            label = output[vid_idx]['labels'][i].item() 
                             score = output[vid_idx]['scores'][i]
                             
                             print(f"Action {i+1}:")
@@ -219,8 +222,23 @@ def main(args):
                             print(f"  - End time: {end:.2f} sec")
                             print(f"  - Label: {label}")
                             print(f"  - Confidence: {score:.4f}")
+
+                            # For Action total length Print 
+                            # if label not in label_times:
+                            #     label_times[label] = {'min_start': start, 'max_end': end}
+
+                            # else:
+                            #     label_times[label]['min_start'] = min(label_times[label]['min_start'], start)
+                            #     label_times[label]['max_end'] = max(label_times[label]['max_end'], end)
+
                         else: 
                             continue
+                    # For Action total length Print 
+                    # for label, times in sorted(label_times.items(), key=lambda x: x[0]):  
+                    #         print(f"\nLabel {label}:")
+                    #         print(f"  - Start time: {times['min_start']:.2f} sec")
+                    #         print(f"  - End time: {times['max_end']:.2f} sec")
+
                 else:
                     print("No actions detected.")
 

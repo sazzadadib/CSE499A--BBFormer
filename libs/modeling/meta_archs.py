@@ -625,6 +625,41 @@ class PtTransformer(nn.Module):
                 'final_loss' : final_loss}
 
     @torch.no_grad()
+    # def inference(
+    #     self,
+    #     video_list,
+    #     points, fpn_masks,
+    #     out_cls_logits, out_offsets
+    # ):
+    #     # video_list B (list) [dict]
+    #     # points F (list) [T_i, 4]
+    #     # fpn_masks, out_*: F (List) [B, T_i, C]
+    #     print("Enter The inference")
+    #     results = []
+    #     print("Video List:", video_list)
+
+    #     # 1: gather video meta information
+    #     vid_idxs = [x['video_id'] for x in video_list]
+    #     print("After the inference 1st line")
+    #     # Example of constructing video_list with the necessary keys
+    #     video_list = []
+    #     video_data = {
+    #         'fps': 30,                 # Add the frame rate
+    #         'duration': 120,           # Add the duration of the video in seconds
+    #         'feat_stride': 1,           # Add the feature stride
+    #         'feat_num_frames':16
+    #     }
+
+    #     video_list.append(video_data)
+    #     print("Video List:", video_list)
+    #     vid_fps = [x['fps'] for x in video_list]
+    #     print("After the inference 2nd line")
+    #     vid_lens = [x['duration'] for x in video_list]
+    #     print("After the inference 3rd line")
+    #     vid_ft_stride = [x['feat_stride'] for x in video_list]
+    #     print("After the inference 4th line")
+    #     vid_ft_nframes = [x['feat_num_frames'] for x in video_list]
+    #     print("After the inference 5th line")
     def inference(
         self,
         video_list,
@@ -641,17 +676,26 @@ class PtTransformer(nn.Module):
         # 1: gather video meta information
         vid_idxs = [x['video_id'] for x in video_list]
         print("After the inference 1st line")
-        # Example of constructing video_list with the necessary keys
-        video_list = []
+        
+        # Define the video_data to be added
         video_data = {
             'fps': 30,                 # Add the frame rate
             'duration': 120,           # Add the duration of the video in seconds
-            'feat_stride': 1,           # Add the feature stride
-            'feat_num_frames':16
+            'feat_stride': 4,          # Add the feature stride
+            'feat_num_frames': 16      # Add the number of feature frames
         }
 
-        video_list.append(video_data)
-        print("Video List:", video_list)
+        # Check if the video_data already exists in video_list
+        if not any(video_data == x for x in video_list):
+            video_list = []
+            video_list.append(video_data)
+            print("Video data appended to the list.")
+        else:
+            print("Video data already exists in the list.")
+        
+        print("Video List after checking and possibly appending:", video_list)
+
+        # Extract video information
         vid_fps = [x['fps'] for x in video_list]
         print("After the inference 2nd line")
         vid_lens = [x['duration'] for x in video_list]
@@ -660,6 +704,7 @@ class PtTransformer(nn.Module):
         print("After the inference 4th line")
         vid_ft_nframes = [x['feat_num_frames'] for x in video_list]
         print("After the inference 5th line")
+
 
         # 2: inference on each single video and gather the results
         # upto this point, all results use timestamps defined on feature grids

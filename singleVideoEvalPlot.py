@@ -274,32 +274,27 @@ def main(args):
     gt_json = json_data['GT']
 
 
-    # Create a mapping of label IDs to action names
     label_mapping = {
-        0: "Action_0",
-        1: "Action_1",
-        2: "Action_2",
-        3: "Action_3",
-        4: "Action_4",
-        5: "Action_5",
-        6: "Action_6",
-        7: "Action_7",
-        8: "Action_8",
-        9: "Action_9",
-        10: "Action_10",
-        11: "Action_11",
-        12: "Action_12",
-        13: "Action_13",
-        14: "Action_14",
-        15: "Action_15",
-        16: "Action_16",
-        17: "Action_17",
-        18: "Action_18",
-        19: "Action_19",
-        20: "Action_20"
-
-
-        # Add more mappings as needed
+        0: "BaseballPitch",
+        1: "BasketballDunk",
+        2: "Billiards",
+        3: "CleanAndJerk",
+        4: "CliffDiving",
+        5: "CricketBowling",
+        6: "CricketShot",
+        7: "Diving",
+        8: "FrisbeeCatch",
+        9: "GolfSwing",
+        10: "HammerThrow",
+        11: "HighJump",
+        12: "JavelinThrow",
+        13: "LongJump",
+        14: "PoleVault",
+        15: "Shotput",
+        16: "SoccerPenalty",
+        17: "TennisSwing",
+        18: "ThrowDiscus",
+        19: "VolleyballSpiking",
     }
     with torch.no_grad():
         # Create a list with just one element to match the model's expectation

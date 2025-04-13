@@ -266,13 +266,13 @@ def main(args):
    
    
     pred_json = {}
-    gt = cfg['dataset']['json_file']
 
-    # Load the JSON file
-    with open(gt, 'r') as f:
+    json_path = '/content/CSE499A--BBFormer/data/gt.json'  
+    with open(json_path, 'r') as f:
         json_data = json.load(f)
-    gt_json = json_data['database']
-    print(f"gt_json ::?:{gt_json}")
+
+    gt_json = json_data['GT']
+
 
     # Create a mapping of label IDs to action names
     label_mapping = {

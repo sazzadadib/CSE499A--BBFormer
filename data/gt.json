@@ -1,0 +1,19 @@
+{
+    "GT": {
+        "video_test": {
+            "subset": "Test",
+            "duration": 24.0,
+            "fps": 30.0,
+            "annotations": [
+                {
+                    "label": "HighJump",
+                    "segment": [
+                        8.96,
+                        14.01
+                    ],
+                    "label_id": 11
+                }
+            ]
+        }
+    }
+}

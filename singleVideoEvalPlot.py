@@ -24,7 +24,7 @@ from libs.utils import valid_one_epoch, ANETdetection, fix_random_seed
 
 # CONFIG for visualization
 clip_len = 0.1
-gap = 0.5
+gap = 1
 save_dir = './tal_viz_output_one_jpg_v2'
 fontsize = 24
 
@@ -365,7 +365,7 @@ def main(args):
     # Generate video plot after predictions
     # generate_video_plot_one_jpg_v2('video_test_0000004', pred_json, gt_json, args.video_path)
     # generate_video_plot_one_jpg_v2('video_test_0000004', pred_json, gt_json, args.video_path, score_threshold=0.1)
-    generate_video_plot_one_jpg_v2('video_test_0000004', pred_json, gt_json, args.video_path, min_segment_length=0.1)
+    generate_video_plot_one_jpg_v2('video_test', pred_json, gt_json, args.video_path, min_segment_length=0.1)
     return
 
 ################################################################################

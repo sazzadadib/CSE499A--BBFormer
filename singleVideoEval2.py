@@ -96,7 +96,6 @@ def main(args):
 
     # Validate input video feature file
     assert os.path.isfile(args.video), f"Video feature file {args.video} does not exist!"
-    assert os.path.isfile(args.video_path), f"Video file {args.video_path} does not exist!"
 
     if args.topk > 0:
         cfg['model']['test_cfg']['max_seg_num'] = args.topk

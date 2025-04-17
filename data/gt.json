@@ -1,6 +1,6 @@
 {
     "GT": {
-        "highjump.mp4": {
+        "highjump.npy": {
             "subset": "Test",
             "duration": 24.0,
             "fps": 30.0,

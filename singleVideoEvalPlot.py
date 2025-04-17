@@ -91,7 +91,7 @@ def generate_video_plot_one_jpg_v2(
     _plot_annotation_bars(fig, gs, duration, gt_annos, pred_annos)
 
     # Save as JPG and PDF
-    jpg_path = os.path.join(save_dir, f"{video_id}_final_clean.jpg")
+    jpg_path = os.path.join(save_dir, f"video_test_full_labeled.jpg")
     pdf_path = os.path.join(save_dir, f"{video_id}_final_clean.pdf")
 
     plt.savefig(jpg_path, dpi=150, bbox_inches='tight')

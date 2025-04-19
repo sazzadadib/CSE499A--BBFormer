@@ -422,7 +422,7 @@ def main(args):
             if output[vid_idx]['segments'].shape[0] > 0:
                 pred_json[args.video] = []
                 for i in range(output[vid_idx]['segments'].shape[0]):
-                    if output[vid_idx]['scores'][i] > 0.32:
+                    if output[vid_idx]['scores'][i] > 0.31:
                         start = output[vid_idx]['segments'][i, 0].item()
                         end = output[vid_idx]['segments'][i, 1].item()
                         label_id = output[vid_idx]['labels'][i].item()

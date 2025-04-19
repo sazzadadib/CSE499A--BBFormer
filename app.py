@@ -14,22 +14,25 @@ mp4_file = st.file_uploader("Upload your .mp4 video file", type=["mp4"])
 
 if npy_file is not None and mp4_file is not None:
     # Save uploaded files
-    with open("testVideo.npy", "wb") as f:
+    npy_filename = npy_file.name
+    mp4_filename = mp4_file.name
+
+    with open(npy_filename, "wb") as f:
         f.write(npy_file.read())
-    with open("input_video.mp4", "wb") as f:
+    with open(mp4_filename, "wb") as f:
         f.write(mp4_file.read())
 
     st.success("✅ Files uploaded successfully! Starting inference...")
 
     # Run inference
-    result = os.popen("python ./singleVideoEvalPlot.py ./configs/thumos_i3d.yaml ./ckpt/thumos_i3d_reproduce testVideo.npy input_video.mp4").read()
+    result = os.popen(f"python ./singleVideoEvalPlot.py ./configs/thumos_i3d.yaml ./ckpt/thumos_i3d_reproduce {npy_filename} {mp4_filename}").read()
 
     # Two column layout
     col1, col2 = st.columns([1.2, 1.8])
 
     with col1:
         st.subheader("▶ Uploaded Video")
-        st.video("input_video.mp4")
+        st.video(mp4_filename)
 
     with col2:
         st.subheader("🧠 Inference Output")

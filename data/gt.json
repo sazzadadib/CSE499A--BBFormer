@@ -14,6 +14,60 @@
                     "label_id": 11
                 }
             ]
+        },
+        "tennis26.npy": {
+            "subset": "Test",
+            "duration": 11.0,
+            "fps": 30.0,
+            "annotations": [
+                {
+                    "label": "TennisSwing",
+                    "segment": [
+                        2.0,
+                        4.0
+                    ],
+                    "label_id": 17
+                },
+                {
+                    "label": "TennisSwing",
+                    "segment": [
+                        4.80,
+                        7.0
+                    ],
+                    "label_id": 17
+                },
+                {
+                    "label": "TennisSwing",
+                    "segment": [
+                        7.5,
+                        10.0
+                    ],
+                    "label_id": 17
+                }
+            ]
+        },
+        "golf.npy": {
+            "subset": "Test",
+            "duration": 48.0,
+            "fps": 30.0,
+            "annotations": [
+                {
+                    "label": "GolfSwing",
+                    "segment": [
+                        10.40,
+                        17.80
+                    ],
+                    "label_id": 9
+                },
+                {
+                    "label": "GolfSwing",
+                    "segment": [
+                        31.0,
+                        39.0
+                    ],
+                    "label_id": 9
+                }
+            ]
         }
     }
 }
